@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "ro.davidarsene.leitmotif"
-    compileSdk = 33
-    buildToolsVersion = "33.0.1"
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 31
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 10000
         versionName = "1.0"
         resourceConfigurations.add("en")
@@ -19,7 +19,6 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-
         }
     }
     compileOptions {
@@ -29,12 +28,18 @@ android {
     kotlinOptions.jvmTarget = "11"
 
     buildFeatures {
+        aidl = true
         viewBinding = true
     }
 }
 
 dependencies {
     compileOnly(project(":dummy"))
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("com.google.android.material:material:1.9.0")
+
+    implementation("com.github.topjohnwu.libsu:core:+")
+    implementation("com.github.topjohnwu.libsu:service:+")
+    implementation("org.lsposed.hiddenapibypass:hiddenapibypass:+")
+
+    implementation("androidx.core:core-ktx:+")
+    implementation("com.google.android.material:material:+")
 }

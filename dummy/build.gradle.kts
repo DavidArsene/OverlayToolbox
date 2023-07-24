@@ -5,7 +5,7 @@ plugins {
 android {
     namespace = "ro.davidarsene.dummy"
     compileSdk = 33
-    buildToolsVersion = "33.0.1"
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         minSdk = 31
@@ -20,4 +20,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures {
+        aidl = true
+    }
+}
+
+dependencies {
+    implementation("androidx.annotation:annotation-jvm:+")
 }

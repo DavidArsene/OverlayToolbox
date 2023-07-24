@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.lsposed.hiddenapibypass.HiddenApiBypass
 import ro.davidarsene.leitmotif.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         ui.fab.setOnClickListener { view ->
             Snackbar.make(view, "Hello World!", Snackbar.LENGTH_LONG).show()
         }
+
+        HiddenApiBypass.addHiddenApiExemptions("")
+
+        RootHelper.init(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean =
