@@ -24,8 +24,8 @@ object RootHelper {
     private class Connection : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
 
-            val rootService = IRootBridge.Stub.asInterface(service)
-            overlayManager = IOverlayManager.Stub.asInterface(rootService.overlayManager)
+            val rootBridge = IRootBridge.Stub.asInterface(service)
+            overlayManager = IOverlayManager.Stub.asInterface(rootBridge.overlayManager)
 
             Log.d(TAG, "Root service started")
         }
