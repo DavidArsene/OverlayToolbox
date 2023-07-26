@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 rootProject.name = "Leitmotif"
 
 include(":app")
-include(":dummy")

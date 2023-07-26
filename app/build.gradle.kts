@@ -1,16 +1,16 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("com.android.application") version "8.1.0-rc01"
+    id("org.jetbrains.kotlin.android") version "1.9.0"
 }
 
 android {
     namespace = "ro.davidarsene.leitmotif"
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
+    compileSdk = 33
+    buildToolsVersion = "33.0.1"
 
     defaultConfig {
         minSdk = 31
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 10000
         versionName = "1.0"
         resourceConfigurations.add("en")
@@ -34,12 +34,10 @@ android {
 }
 
 dependencies {
-    compileOnly(project(":dummy"))
-
     implementation("com.github.topjohnwu.libsu:core:+")
     implementation("com.github.topjohnwu.libsu:service:+")
     implementation("org.lsposed.hiddenapibypass:hiddenapibypass:+")
 
-    implementation("androidx.core:core-ktx:+")
-    implementation("com.google.android.material:material:+")
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("com.google.android.material:material:1.9.0")
 }
