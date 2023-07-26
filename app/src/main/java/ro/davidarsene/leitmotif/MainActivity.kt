@@ -3,6 +3,7 @@ package ro.davidarsene.leitmotif
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import ro.davidarsene.leitmotif.databinding.ActivityMainBinding
 
@@ -16,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         ui = ActivityMainBinding.inflate(layoutInflater)
         setContentView(ui.root)
         setSupportActionBar(ui.toolbar)
+
+        val overlays = RootHelper.overlayManager.getAllOverlays(0)
+
+        ui.overlayList.adapter = object :
+            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1) {
+            override fun getCount(): Int = overlays.size
+            override fun getItem(position: Int): String = overlays.keys.elementAt(position)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean =
