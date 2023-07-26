@@ -1,5 +1,5 @@
 package ro.davidarsene.leitmotif;
 
 interface IRootBridge {
-    IBinder getOverlayManager();
+    IBinder getService(in String name);
 }

@@ -2,8 +2,6 @@ package ro.davidarsene.leitmotif
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -47,13 +45,4 @@ class MainActivity : AppCompatActivity() {
                 }.show()
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean =
-        menuInflater.inflate(R.menu.menu_main, menu).let { true }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
 }
