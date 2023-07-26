@@ -5,15 +5,16 @@
     <application
         android:label="@string/app_name"
         android:theme="@style/Theme.Main">
+        <activity android:name=".OverlayDetailsActivity" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
     </application>
 
