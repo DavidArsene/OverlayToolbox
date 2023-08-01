@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:queryHint="@android:string/search_go" />
+
+    <com.l4digital.fastscroll.FastScrollRecyclerView
+        android:id="@+id/appList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search"
+        app:bubbleSize="small"
+        app:hideScrollbar="false"
+        app:bubbleColor="?attr/colorSecondary"
+        app:bubbleTextColor="?attr/colorOnSecondary"
+        app:handleColor="?attr/colorSecondary"
+        app:trackColor="?attr/colorSecondary" />
+
+</RelativeLayout>

@@ -4,8 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import ro.davidarsene.leitmotif.databinding.ActivityMainBinding
+import ro.davidarsene.leitmotif.databinding.*
+import ro.davidarsene.leitmotif.trash.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         ui = ActivityMainBinding.inflate(layoutInflater)
         setContentView(ui.root)
-        setSupportActionBar(ui.toolbar)
+
+        ui.fab.setOnClickListener { newOverlayFabListener() }
 
         val overlays = RootHelper.overlayManager.getAllOverlays(0)
 
@@ -43,6 +48,39 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
 
                 }.show()
+        }
+    }
+
+    @Suppress("Deprecation")
+    private fun getInstalledApps() = packageManager.run {
+        getInstalledApplications(0)
+            .map {
+                val label = getApplicationLabel(it).toString()
+                val icon = getApplicationIcon(it)
+                AppInfo(label, it.packageName, icon)
+            }
+            .sortedBy { it.label }
+    }
+
+    private fun newOverlayFabListener() {
+        val dialogUi = AppChooserBinding.inflate(layoutInflater)
+
+        dialogUi.appList.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        dialogUi.appList.adapter = AppChooserAdapter(getInstalledApps())
+
+        dialogUi.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?) = false
+            override fun onQueryTextChange(newText: String?) =
+                (dialogUi.appList.adapter as AppChooserAdapter).filter.filter(newText).let { true }
+        })
+
+        MaterialAlertDialogBuilder(this).setView(dialogUi.root).show().apply {
+            window.setLayout(
+                resources.displayMetrics.widthPixels * 9 / 10,
+                window.attributes.height
+            )
         }
     }
 }
