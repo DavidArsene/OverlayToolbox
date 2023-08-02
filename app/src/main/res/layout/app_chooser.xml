@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        app:queryHint="@android:string/search_go" />
+        app:queryHint="@android:string/search_go"
+        app:searchIcon="@null" />
 
     <com.l4digital.fastscroll.FastScrollRecyclerView
         android:id="@+id/appList"

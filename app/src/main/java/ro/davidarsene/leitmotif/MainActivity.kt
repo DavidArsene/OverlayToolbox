@@ -2,6 +2,7 @@ package ro.davidarsene.leitmotif
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -53,13 +54,17 @@ class MainActivity : AppCompatActivity() {
 
     @Suppress("Deprecation")
     private fun getInstalledApps() = packageManager.run {
+
         getInstalledApplications(0)
             .map {
                 val label = getApplicationLabel(it).toString()
                 val icon = getApplicationIcon(it)
                 AppInfo(label, it.packageName, icon)
+
+            }.let { list ->
+                if (resources.getBoolean(R.bool.sortAppList))
+                    list.sortedBy { it.label } else list
             }
-            .sortedBy { it.label }
     }
 
     private fun newOverlayFabListener() {
@@ -78,8 +83,8 @@ class MainActivity : AppCompatActivity() {
 
         MaterialAlertDialogBuilder(this).setView(dialogUi.root).show().apply {
             window.setLayout(
-                resources.displayMetrics.widthPixels * 9 / 10,
-                window.attributes.height
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
             )
         }
     }
