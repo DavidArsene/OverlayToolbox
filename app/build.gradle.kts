@@ -40,6 +40,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.activity:activity-ktx:1.7.2")
 
     implementation("io.github.l4digital:fastscroll:+")
 }

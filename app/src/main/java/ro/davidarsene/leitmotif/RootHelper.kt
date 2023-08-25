@@ -8,14 +8,14 @@ import android.content.om.IOverlayManager
 import android.os.IBinder
 import android.os.ServiceManager
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.topjohnwu.superuser.ipc.RootService
 import org.lsposed.hiddenapibypass.HiddenApiBypass
-import java.util.concurrent.CountDownLatch
 
 object RootHelper {
 
     private val TAG = this::class.java.simpleName
-    private val latch = CountDownLatch(1)
+    val ready = MutableLiveData<Unit>()
 
     lateinit var overlayManager: IOverlayManager
 
@@ -26,15 +26,6 @@ object RootHelper {
 
         val intent = Intent(context, RootBridge::class.java)
         RootService.bind(intent, Connection())
-
-        Thread {
-            latch.await()
-
-            val intent = Intent(context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            context.startActivity(intent)
-
-        }.start()
     }
 
     private class Connection : ServiceConnection {
@@ -46,10 +37,10 @@ object RootHelper {
                 rootBridge.getService(Context.OVERLAY_SERVICE))
 
             Log.d(TAG, "Root service started")
-            latch.countDown()
+            ready.value = Unit
         }
 
-        override fun onServiceDisconnected(p0: ComponentName?) {
+        override fun onServiceDisconnected(name: ComponentName?) {
             Log.d(TAG, "Stopping root service")
         }
     }

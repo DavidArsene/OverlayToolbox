@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import ro.davidarsene.leitmotif.trash.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var ui: ActivityMainBinding
+    private val vm: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(ui.root)
 
         ui.fab.setOnClickListener { newOverlayFabListener() }
+        vm.appList.observe(this) { ui.fab.show() }
 
+        RootHelper.ready.observe(this) { showOverlays() }
+    }
+
+    private fun showOverlays() {
         val overlays = RootHelper.overlayManager.getAllOverlays(0)
 
         ui.overlayList.adapter = object :
@@ -38,9 +45,7 @@ class MainActivity : AppCompatActivity() {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Choose overlay for $overlaysForPackage")
                 .setItems(
-                    overlays[overlaysForPackage]!!.map {
-                        it.packageName + if (it.isFabricated) ":${it.overlayName}" else ""
-                    }.toTypedArray()) { _, which ->
+                    overlays[overlaysForPackage]!!.map { it.fullName() }.toTypedArray()) { _, which ->
 
                     val identifier = overlays[overlaysForPackage]!![which].overlayIdentifier
 
@@ -52,28 +57,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Suppress("Deprecation")
-    private fun getInstalledApps() = packageManager.run {
-
-        getInstalledApplications(0)
-            .map {
-                val label = getApplicationLabel(it).toString()
-                val icon = getApplicationIcon(it)
-                AppInfo(label, it.packageName, icon)
-
-            }.let { list ->
-                if (resources.getBoolean(R.bool.sortAppList))
-                    list.sortedBy { it.label } else list
-            }
-    }
-
     private fun newOverlayFabListener() {
         val dialogUi = AppChooserBinding.inflate(layoutInflater)
 
         dialogUi.appList.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        dialogUi.appList.adapter = AppChooserAdapter(getInstalledApps())
+        dialogUi.appList.adapter = AppChooserAdapter(vm.appList.value!!)
 
         dialogUi.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?) = false

@@ -21,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
+        android:visibility="invisible"
         android:text="@string/new_overlay"
         app:icon="@android:drawable/ic_input_add" />
 
