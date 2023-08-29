@@ -1,4 +1,4 @@
-package ro.davidarsene.leitmotif
+package ro.davidarsene.overlaytoolbox
 
 import com.google.android.material.color.DynamicColors
 

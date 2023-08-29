@@ -1,9 +1,9 @@
-package ro.davidarsene.leitmotif
+package ro.davidarsene.overlaytoolbox
 
 import android.content.om.OverlayInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ro.davidarsene.leitmotif.databinding.ActivityOverlayDetailsBinding
+import ro.davidarsene.overlaytoolbox.databinding.ActivityOverlayDetailsBinding
 
 class OverlayDetailsActivity : AppCompatActivity() {
 

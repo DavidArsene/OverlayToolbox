@@ -1,4 +1,4 @@
-package ro.davidarsene.leitmotif
+package ro.davidarsene.overlaytoolbox
 
 import android.content.ComponentName
 import android.content.Context

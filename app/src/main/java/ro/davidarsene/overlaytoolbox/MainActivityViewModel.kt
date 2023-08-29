@@ -1,9 +1,9 @@
-package ro.davidarsene.leitmotif
+package ro.davidarsene.overlaytoolbox
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import ro.davidarsene.leitmotif.trash.AppInfo
+import ro.davidarsene.overlaytoolbox.trash.AppInfo
 
 class MainActivityViewModel(private val app: Application) : AndroidViewModel(app) {
 

@@ -1,4 +1,4 @@
-package ro.davidarsene.leitmotif.trash
+package ro.davidarsene.overlaytoolbox.trash
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -8,8 +8,8 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.*
 import com.l4digital.fastscroll.FastScroller
-import ro.davidarsene.leitmotif.*
-import ro.davidarsene.leitmotif.databinding.AppChooserItemBinding
+import ro.davidarsene.overlaytoolbox.*
+import ro.davidarsene.overlaytoolbox.databinding.AppChooserItemBinding
 
 
 class AppChooserAdapter(private val appList: List<AppInfo>) :

@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Leitmotif"
+rootProject.name = "Overlay Toolbox"
 
 include(":app")

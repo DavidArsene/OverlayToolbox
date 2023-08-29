@@ -1,4 +1,4 @@
-package ro.davidarsene.leitmotif
+package ro.davidarsene.overlaytoolbox
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import ro.davidarsene.leitmotif.databinding.*
-import ro.davidarsene.leitmotif.trash.*
+import ro.davidarsene.overlaytoolbox.databinding.*
+import ro.davidarsene.overlaytoolbox.trash.*
 
 
 class MainActivity : AppCompatActivity() {
