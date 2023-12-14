@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="sortAppList">true</bool>
+    <bool name="settings_hide_mdc_lib">false</bool>
+    <bool name="settings_sort_app_list">true</bool>
+    <bool name="settings_create_as_self">false</bool>
 </resources>

@@ -2,39 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    android:background="?android:attr/selectableItemBackground">
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:scaleType="centerInside"
-        android:importantForAccessibility="no" />
+        android:importantForAccessibility="no"
+        android:scaleType="centerInside" />
 
     <TextView
         android:id="@+id/label"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/icon"
         android:layout_marginStart="16dp"
-        android:textSize="16sp"
+        android:layout_toEndOf="@id/icon"
         android:ellipsize="end"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="@string/missing_target" />
 
     <TextView
-        android:id="@+id/packageName"
+        android:id="@+id/package_name"
+        style="@style/TextAppearance.Material3.LabelLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/label"
-        android:layout_toEndOf="@id/icon"
         android:layout_marginStart="16dp"
-        android:textSize="14sp"
+        android:layout_toEndOf="@id/icon"
         android:ellipsize="end"
         android:singleLine="true" />
 

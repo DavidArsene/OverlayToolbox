@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
@@ -14,15 +14,16 @@
         app:searchIcon="@null" />
 
     <com.l4digital.fastscroll.FastScrollRecyclerView
-        android:id="@+id/appList"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search"
-        app:bubbleSize="small"
-        app:hideScrollbar="false"
         app:bubbleColor="?attr/colorSecondary"
+        app:bubbleSize="small"
         app:bubbleTextColor="?attr/colorOnSecondary"
         app:handleColor="?attr/colorSecondary"
+        app:hideScrollbar="false"
+        app:layoutManager="LinearLayoutManager"
         app:trackColor="?attr/colorSecondary" />
 
 </RelativeLayout>
