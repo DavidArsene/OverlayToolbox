@@ -2,7 +2,6 @@
 
 package ro.davidarsene.overlaytoolbox
 
-import ro.davidarsene.overlaytoolbox.util.RootHelper
 import android.content.Context
 import android.content.Intent
 import android.content.om.OverlayInfo
@@ -10,9 +9,11 @@ import android.content.om.OverlayManagerTransaction
 import android.idmap2.pb.FabricatedV1
 import android.widget.Toast
 import com.google.devrel.gmscore.tools.apk.arsc.TypeChunk
+import kotlinx.coroutines.Runnable
+import ro.davidarsene.overlaytoolbox.util.RootHelper
 
 fun OverlayInfo.fullName(): String = if (isFabricated) "$packageName:$overlayName" else packageName
-fun OverlayInfo.shortName(): String = if (isFabricated) overlayName else packageName
+fun OverlayInfo.shortName(): String = if (isFabricated) overlayName ?: "null" else packageName
 
 fun OverlayManagerTransaction.Builder.commit() = RootHelper.commit(build())
 
@@ -20,7 +21,8 @@ fun FabricatedV1.ResourceEntry.fullName(type: FabricatedV1.ResourceType) = "${ty
 
 fun TypeChunk.Entry.fullName() = "$typeName/$key"
 
-fun TypeChunk.Entry.valueToString() = value?.toString() ?: """["${values.values.joinToString("\", \"")}"]"""
+fun TypeChunk.Entry.valueToString() = value?.toString() ?:
+    "[ ${values.values.joinToString(" • ") { "${it.type.name}: $it" }} ]"
 
 fun runOnThread(action: Runnable) = Thread(action).start()
 

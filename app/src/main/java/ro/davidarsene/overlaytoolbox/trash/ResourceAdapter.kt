@@ -1,12 +1,13 @@
 package ro.davidarsene.overlaytoolbox.trash
 
-import ro.davidarsene.overlaytoolbox.databinding.ItemResourceBinding
 import android.graphics.Color
 import android.idmap2.pb.FabricatedV1
 import android.view.View
-import com.google.devrel.gmscore.tools.apk.arsc.BinaryResourceValue
-import com.google.devrel.gmscore.tools.apk.arsc.StringPoolChunk
+import com.google.devrel.gmscore.tools.apk.arsc.*
 import com.l4digital.fastscroll.FastScroller
+import ro.davidarsene.overlaytoolbox.databinding.ItemResourceBinding
+import ro.davidarsene.overlaytoolbox.fullName
+import ro.davidarsene.overlaytoolbox.valueToString
 
 
 class ResourceAdapter(
@@ -69,5 +70,8 @@ class OverlaidResource(
     constructor(
         old: String?, new: BinaryResourceValue, name: String
     ) : this(old, new.toString(), name, new)
-}
 
+    constructor(
+        old: String?, new: TypeChunk.Entry
+    ) : this(old, new.valueToString(), new.fullName(), new.value)
+}

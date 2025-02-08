@@ -3,4 +3,5 @@
     <bool name="settings_hide_mdc_lib">false</bool>
     <bool name="settings_sort_app_list">true</bool>
     <bool name="settings_create_as_self">false</bool>
+    <bool name="settings_show_all_types">false</bool>
 </resources>

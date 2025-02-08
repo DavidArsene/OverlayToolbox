@@ -11,13 +11,16 @@
     <string name="details_bar_menu_share">Share</string>
     <string name="details_bar_menu_delete">Delete</string>
 
+    <string name="overlay_name">Overlay Name</string>
     <string name="no_apk_viewer">Install a file manager to view the contents of this file</string>
+    <string name="bootloop_protection">Bootloop Protection</string>
     <string name="bootloop_protection_hint">The overlay will be deleted next time you restart the device</string>
     <string name="delete_overlay_title">Delete overlay</string>
     <string name="toast_clipboard">Copied to clipboard</string>
 
     <string name="error_no_resources">App has no resources</string>
     <string name="error_obfuscated_resources">Cannot create overlays for apps with obfuscated resources</string>
+    <string name="error_frro_type_not_allowed">Type not supported by Fabricated Overlays</string>
 
     <string name="creator_add_resource">Add</string>
     <string name="final_details_title">Create overlay</string>

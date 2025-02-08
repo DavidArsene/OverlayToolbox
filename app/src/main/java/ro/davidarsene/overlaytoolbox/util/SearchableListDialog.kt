@@ -1,13 +1,13 @@
 package ro.davidarsene.overlaytoolbox.util
 
-import ro.davidarsene.overlaytoolbox.databinding.SearchableListBinding
-import ro.davidarsene.overlaytoolbox.trash.BaseAdapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import ro.davidarsene.overlaytoolbox.databinding.SearchableListBinding
+import ro.davidarsene.overlaytoolbox.trash.BaseAdapter
 
 object SearchableListDialog {
 
@@ -27,7 +27,7 @@ object SearchableListDialog {
         adapter.filter.filter(null)
 
         return MaterialAlertDialogBuilder(context).setView(ui.root).show().also {
-            it.window.setLayout(MATCH_PARENT, MATCH_PARENT)
+            it.window!!.setLayout(MATCH_PARENT, MATCH_PARENT)
         }
     }
 }

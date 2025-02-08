@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         google()
@@ -7,18 +9,18 @@ pluginManagement {
     buildscript {
         repositories {
             google()
-            maven(url = "https://storage.googleapis.com/r8-releases/raw")
+//            maven(url = "https://storage.googleapis.com/r8-releases/raw")
         }
-        dependencies {
-            classpath("com.android.tools:r8:+")
-        }
+//        dependencies {
+//            classpath("com.android.tools:r8:+")
+//        }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        mavenLocal()
+//        mavenLocal()
         mavenCentral()
         maven(url = "https://jitpack.io")
     }

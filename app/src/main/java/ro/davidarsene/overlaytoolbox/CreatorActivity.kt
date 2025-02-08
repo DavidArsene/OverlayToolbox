@@ -1,10 +1,5 @@
 package ro.davidarsene.overlaytoolbox
 
-import ro.davidarsene.overlaytoolbox.databinding.*
-import ro.davidarsene.overlaytoolbox.model.CreatorViewModel
-import ro.davidarsene.overlaytoolbox.trash.LazyAppInfo
-import ro.davidarsene.overlaytoolbox.trash.ResourceAdapter
-import ro.davidarsene.overlaytoolbox.util.SearchableListDialog
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
@@ -14,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import ro.davidarsene.overlaytoolbox.databinding.*
+import ro.davidarsene.overlaytoolbox.model.CreatorViewModel
+import ro.davidarsene.overlaytoolbox.trash.LazyAppInfo
+import ro.davidarsene.overlaytoolbox.trash.ResourceAdapter
+import ro.davidarsene.overlaytoolbox.util.SearchableListDialog
 
 
 @Suppress("NewApi")
@@ -58,7 +58,9 @@ class CreatorActivity : AppCompatActivity(), View.OnClickListener {
                 dialog.setView(dialogUi.root)
 
                 val res = ores.actual!!.parent!!
-                val dialogType = CreatorDialogs[res.typeName]!!
+                val dialogType = CreatorDialogs[res.typeName] ?: return@ResourceAdapter Snackbar
+                    .make(ui.root, R.string.error_frro_type_not_allowed, Snackbar.LENGTH_SHORT).show()
+
                 dialogType.show(dialogUi, res, this)
 
                 dialog.setPositiveButton(R.string.done) { _, _ ->
@@ -68,8 +70,7 @@ class CreatorActivity : AppCompatActivity(), View.OnClickListener {
                         dialogType.create(dialogUi, text, res)
                     } catch (e: Exception) {
                         return@setPositiveButton Snackbar
-                            .make(ui.root, e.message.toString(), Snackbar.LENGTH_SHORT)
-                            .show()
+                            .make(ui.root, e.message.toString(), Snackbar.LENGTH_SHORT).show()
                     }
                     vm.selectedResources.add(new)
                     ui.valuesList.adapter!!.notifyItemInserted(vm.selectedResources.size - 1)

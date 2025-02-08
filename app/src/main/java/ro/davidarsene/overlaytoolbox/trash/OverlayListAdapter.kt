@@ -1,7 +1,8 @@
 package ro.davidarsene.overlaytoolbox.trash
 
-import ro.davidarsene.overlaytoolbox.databinding.ItemAppBinding
+import android.app.AppGlobals
 import android.content.pm.PackageManager
+import ro.davidarsene.overlaytoolbox.databinding.ItemAppBinding
 
 
 class OverlayListAdapter(
@@ -19,11 +20,11 @@ class OverlayListAdapter(
 
 class LazyAppInfo(val packageName: String) {
 
-    companion object { var pm: PackageManager? = null }
+    companion object { val pm = AppGlobals.getInitialApplication().packageManager!! }
 
     private val app by lazy {
         try {
-            val info = pm!!.getApplicationInfo(packageName, 0)
+            val info = pm.getApplicationInfo(packageName, 0)
 
             // The undocumented load*() methods don't unnecessarily call getApplicationInfo again.
             AppInfo(packageName, info.loadLabel(pm).toString(), info.loadIcon(pm))

@@ -1,21 +1,22 @@
-import com.google.protobuf.gradle.id
+@file:Suppress("UnstableApiUsage", "GradleDynamicVersion")
 
 plugins {
-    id("com.android.application") version "8.3.0-alpha07"
+    id("com.android.application") version "+"
     id("org.jetbrains.kotlin.android") version "+"
     id("com.google.protobuf") version "+"
 }
 
 android {
     namespace = "ro.davidarsene.overlaytoolbox"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 31
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 10000
         versionName = "1.0"
-        resourceConfigurations.addAll(listOf("en", "xhdpi"))
+//        resourceConfigurations.addAll(listOf("en", "xhdpi"))
+        androidResources.localeFilters.addAll(listOf("en"))
     }
     buildTypes {
         release {
@@ -24,7 +25,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 
             optimization.keepRules {
-                ignoreExternalDependencies(
+                ignoreFrom(
                     "androidx.appcompat:appcompat",
                     "androidx.coordinatorlayout:coordinatorlayout",
                     "androidx.core:core",
@@ -53,6 +54,7 @@ android {
     }
 }
 
+val protobufVersion = "4.30.0-RC1"
 dependencies {
     implementation("com.github.topjohnwu.libsu:core:+")
     implementation("com.github.topjohnwu.libsu:service:+")
@@ -64,26 +66,21 @@ dependencies {
     implementation("com.google.android.material:material:+")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:+")
 
-    implementation("com.google.protobuf:protobuf-kotlin-lite:+")
+    implementation("com.google.protobuf:protobuf-kotlin-lite:$protobufVersion")
 
     implementation("io.github.l4digital:fastscroll:+")
 //    implementation("com.github.DavidArsene:arscblamer:+")
-    implementation(files("/home/david/AndroidStudioProjects/arscblamer/build/libs/arscblamer.jar"))
+    implementation(files("D:/Projects/arscblamer/build/libs/arscblamer.jar"))
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:+"
+        artifact = "com.google.protobuf:protoc:$protobufVersion"
     }
     generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
-                id("java") {
-                    option("lite")
-                }
-                id("kotlin") {
-                    option("lite")
-                }
+        all().configureEach {
+            builtins.create("java") {
+                option("lite")
             }
         }
     }

@@ -3,6 +3,7 @@ package ro.davidarsene.overlaytoolbox.util
 import android.content.pm.PackageManager
 import android.idmap2.pb.FabricatedV1
 import com.google.devrel.gmscore.tools.apk.arsc.*
+import ro.davidarsene.overlaytoolbox.trash.LazyAppInfo
 import java.io.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -10,11 +11,11 @@ import java.nio.ByteOrder
 
 object Parsers {
 
-    fun arsc(targetPackage: String, pm: PackageManager) = try {
-        arsc(pm.getApplicationInfo(targetPackage, 0).sourceDir)
+    fun arsc(targetPackage: String) = try {
+        arscFromApk(LazyAppInfo.pm.getApplicationInfo(targetPackage, 0).sourceDir)
     } catch (e: PackageManager.NameNotFoundException) { null }
 
-    fun arsc(apkFile: String) = ArscUtils.getResources(File(apkFile)).typeChunks
+    fun arscFromApk(apkFile: String) = ArscUtils.getResources(File(apkFile)).typeChunks
 
     fun proto(inputStream: InputStream): ParsedFrro {
 
@@ -26,7 +27,7 @@ object Parsers {
         if (magic != fabricatedOverlayMagic) throw IOException("Invalid magic: $magic")
 
         val version = buf.getInt()
-        if (version !in 1..3) throw IOException("Invalid version: $version")
+        if (version !in 1..3) throw IOException("Unsupported version: $version")
 
         /* val crc = */buf.getInt()
 

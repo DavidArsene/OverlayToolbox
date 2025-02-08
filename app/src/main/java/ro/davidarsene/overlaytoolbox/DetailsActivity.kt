@@ -1,11 +1,5 @@
 package ro.davidarsene.overlaytoolbox
 
-import ro.davidarsene.overlaytoolbox.databinding.ActivityDetailsBinding
-import ro.davidarsene.overlaytoolbox.databinding.ItemDetailBinding
-import ro.davidarsene.overlaytoolbox.model.DetailsViewModel
-import ro.davidarsene.overlaytoolbox.trash.LazyAppInfo
-import ro.davidarsene.overlaytoolbox.trash.ResourceAdapter
-import ro.davidarsene.overlaytoolbox.util.RootHelper
 import android.content.*
 import android.content.om.OverlayInfo
 import android.content.om.OverlayManagerTransaction
@@ -16,6 +10,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import ro.davidarsene.overlaytoolbox.databinding.ActivityDetailsBinding
+import ro.davidarsene.overlaytoolbox.databinding.ItemDetailBinding
+import ro.davidarsene.overlaytoolbox.model.DetailsViewModel
+import ro.davidarsene.overlaytoolbox.trash.LazyAppInfo
+import ro.davidarsene.overlaytoolbox.trash.ResourceAdapter
+import ro.davidarsene.overlaytoolbox.util.RootHelper
 import java.io.File
 
 
@@ -105,10 +105,10 @@ class DetailsActivity : AppCompatActivity() {
             ui.loading.hide()
             ui.resourceList.adapter = ResourceAdapter(overlaidResources) {
                 val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-                clipboard.primaryClip = ClipData.newPlainText(
+                clipboard.setPrimaryClip(ClipData.newPlainText(
                     it.name,
                     "${it.name}\n${it.old ?: ""}\n${it.new}"
-                )
+                ))
                 toast(R.string.toast_clipboard)
             }
             ui.resourceListContainer.visibility = View.VISIBLE

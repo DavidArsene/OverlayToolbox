@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<array name="demo_array">
+		<item name="default">Alice</item>
+		<item>Bob</item>
+		<item>Charlie</item>
+		<item>1</item>
+	</array>
+	<attr name="demo_attr">1234</attr>
+	<attr name="demo_attr2" format="string">@attr/demo_string</attr>
+	<attr name="demo_attr3" format="string">@attr/demo_string</attr>
+	<bool name="demo_bool">true</bool>
+	<color name="demo_color_argb8">#deadbeef</color>
+	<color name="demo_color_rgb8">#dedbef</color>
+	<color name="demo_color_argb4">#ad0c</color>
+	<color name="demo_color_rgb4">#d0e</color>
+<!--	<declare-styleable name=""></declare-styleable>-->
+	<dimen name="demo_dimen_dp">12dp</dimen>
+	<dimen name="demo_dimen_sp">12sp</dimen>
+	<dimen name="demo_dimen_pt">12pt</dimen>
+	<dimen name="demo_dimen_px" tools:ignore="PxUsage">12px</dimen>
+	<dimen name="demo_dimen_in" tools:ignore="InOrMmUsage">12in</dimen>
+	<dimen name="demo_dimen_mm" tools:ignore="InOrMmUsage">12mm</dimen>
+	<drawable name="demo_drawable">@drawable/ic_launcher_fg</drawable>
+	<fraction name="demo_float">.75</fraction>
+	<fraction name="demo_percent">69%</fraction>
+	<integer name="demo_integer">420</integer>
+	<integer name="demo_integer_hex">0xCA0D</integer>
+<!--	<item name="demo_item_nav_temp" type="navigation" />-->
+	<macro name="demo_macro">?attr/colorSurface</macro>
+<!--	<overlayable name=""></overlayable>-->
+	<plurals name="demo_plurals">
+		<item quantity="one">Demo</item>
+		<item quantity="other">Demos</item>
+	</plurals>
+	<string name="demo_string">404 Not Found</string>
+	<style name="demo_style">
+		<item name="color">#00dead</item>
+	</style>
+
+<!--
+		Type.NULL -> if (data == 0) "@null" else "<empty>"
+        Type.REFERENCE -> prettyReference('@')
+        Type.ATTRIBUTE -> prettyReference('?')
+        Type.DYNAMIC_REFERENCE -> "dynref/$identifier"
+        Type.DYNAMIC_ATTRIBUTE -> "dynattr/$identifier"
+-->
+</resources>
