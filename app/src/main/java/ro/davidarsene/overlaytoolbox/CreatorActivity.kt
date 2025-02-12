@@ -33,11 +33,11 @@ class CreatorActivity : AppCompatActivity(), View.OnClickListener {
 
         vm.state.observe(this) { state ->
             when (state) {
-                CreatorViewModel.Result.NO_RESOURCES -> {
+                CreatorViewModel.InitResult.NO_RESOURCES -> {
                     toast(R.string.error_no_resources)
                     return@observe finish()
                 }
-                CreatorViewModel.Result.OBFUSCATED_RESOURCES -> {
+                CreatorViewModel.InitResult.OBFUSCATED_RESOURCES -> {
                     toast(R.string.error_obfuscated_resources, Toast.LENGTH_LONG)
                     return@observe finish()
                 }

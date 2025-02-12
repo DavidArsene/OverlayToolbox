@@ -24,6 +24,6 @@ Support creating non-fabricated overlays
 - @jacopotediosi/[GAppsMod](https://github.com/jacopotediosi/GAppsMod) - Design
 
 ## Known Issues
-- Cannot currently set dimen values in Android 14 due to [a bug in AOSP](https://issuetracker.google.com/issues/306002254).
+- ~~Cannot currently set dimen values in Android 14 due to [a bug in AOSP](https://issuetracker.google.com/issues/306002254)~~ ✅ Bypassed
 - Root-enabled file manager required for viewing non-fabricated overlays and receiving shared fabricated overlays.
 - App sometimes starts in the background and displays a "superuser granted" toast.

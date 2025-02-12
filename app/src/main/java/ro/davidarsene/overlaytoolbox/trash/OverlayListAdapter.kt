@@ -44,8 +44,8 @@ class LazyAppInfo(val packageName: String) {
             ui.packageName.text = packageName
             ui.icon.setImageDrawable(app.icon)
         } else {
-            ui.label.text = packageName
-            ui.packageName.text = null
+            ui.label.text = "Not installed"
+            ui.packageName.text = packageName
             ui.icon.setImageDrawable(null)
         }
     }
