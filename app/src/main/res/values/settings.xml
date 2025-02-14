@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="settings_hide_mdc_lib">false</bool>
-    <bool name="settings_sort_app_list">true</bool>
-    <bool name="settings_create_as_self">false</bool>
-    <bool name="settings_show_all_types">false</bool>
+	<bool name="settings_hide_mdc_lib">false</bool>
+	<bool name="settings_sort_app_list">true</bool>
+	<bool name="settings_create_as_self">false</bool>
+	<bool name="settings_show_all_types">false</bool>
+
+	<color name="settings_icon_color">#FFF</color>
+	<color name="settings_icon_blueprint">#42A5F5</color>
 </resources>
